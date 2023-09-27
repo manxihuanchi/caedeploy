@@ -1,0 +1,19 @@
+/*  文件放在项目文件夹下的initdata文件夹中
+ *  devops 放在首位
+*/
+[{
+  "programCode": "282877560559017986",
+  "programName":"devops",
+  "autoRunning":true
+},
+  {
+    "programCode": "232229551710445570",
+    "programName":"hydrogenV2",
+    "initdata": [
+      "constant-data.cabak",
+      "RuntimeEnvBeans.cabean",
+      "ca-rawdata.cabak",
+      "ccdd-tmplmetadata.cabean"
+    ]
+  }
+]

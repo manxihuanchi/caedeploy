@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.9</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.kuangkie</groupId>
+	<artifactId>caedeploy</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>saedeploy</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.kuangkie</groupId>
+			<artifactId>kuangkie</artifactId>
+			<version>0.0.47</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.huaweicloud.sdk</groupId>
+		    <artifactId>huaweicloud-sdk-image</artifactId>
+		    <version>3.1.60</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.huaweicloud</groupId>
+			<artifactId>esdk-obs-java-bundle</artifactId>
+			<version>3.23.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.huaweicloud.sdk</groupId>
+			<artifactId>huaweicloud-sdk-cae</artifactId>
+			<version>3.1.59</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- 打包环境配置 开发环境 测试环境 正式环境 -->
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<env>dev</env>
+			</properties>
+			<!-- 未指定环境时，默认打包dev环境 -->
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>zmzc</id>
+			<properties>
+				<env>zmzc</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>product</id>
+			<properties>
+				<env>product</env>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<finalName>caedeploy</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<!-- 对于项目资源文件的配置放在build中 -->
+		<resources>
+			<resource>
+				<directory>src/main/resources/${env}</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xm]</include>
+					<include>**/*.properties</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+
+	</build>
+
+</project>
