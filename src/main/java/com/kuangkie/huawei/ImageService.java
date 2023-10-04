@@ -39,7 +39,6 @@ public class ImageService {
         ICredential auth = new BasicCredentials()
                 .withAk(ak)
                 .withSk(sk);
-
         ImageClient client = ImageClient.newBuilder()
                 .withCredential(auth)
                 .withRegion(ImageRegion.valueOf("cn-north-4"))
@@ -49,8 +48,6 @@ public class ImageService {
 
         String image = Base64.getEncoder().encodeToString(fileByte);
 		body.withImage(image);
-        
-//        body.withUrl("https://img0.baidu.com/it/u=2686955487,3501942157&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750");
         request.withBody(body);
         try {
             RunImageMediaTaggingResponse response = client.runImageMediaTagging(request);
@@ -60,7 +57,6 @@ public class ImageService {
             	ImageMediaTaggingItemBody imageMediaTaggingItemBody = tags.get(0);
             	return imageMediaTaggingItemBody;
             }
-            
             return null;
         } catch (ConnectionException e) {
             e.printStackTrace();
