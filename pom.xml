@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>com.kuangkie</groupId>
 			<artifactId>kuangkie</artifactId>
-			<version>0.0.59</version>
+			<version>2.1.1</version>
 		</dependency>
 		
 		<dependency>
